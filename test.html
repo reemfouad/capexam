@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+ <link rel="stylesheet" type="text/css" href="css/quiz.css">
+ <link rel="stylesheet" type="text/css" href="fontawesome/css/all.css">
+
+
+</head>
+<body id="tst">
+  <header>
+   
+    <nav class="navbar navbar-dark bg-dark fixed-top mb-5">
+      <a class="navbar-brand text-white" href="#">
+        <i class="fab fa-html5 text-white"></i>
+      <span id="de">HTML QUIZ</span>
+      </a>
+      <div id="demo2" class="ml-auto text-danger"></div>
+      <div id="demo" class="ml-auto text-white"></div>
+    </nav>
+  </header>
+  <div >
+<h2 id="test_status"></h2>
+<div  id="test"></div>
+</div>
+
+<script>
+
+var pos = 0, test, test_status, question, choice, choices, chA, chB, chC, correct = 0;
+var questions = [
+   [" What does HTML stand for?","A. Hyper Text Markup Language","B. Hyperlinks and Text Markup Language","C. Home Tool Markup Language","A"],
+          [" What is the correct sequence of HTML tags for starting a webpage?","A. Head, Title, HTML","B. Title, Head, HTML","C. HTML, Head, Title","C"],
+          [" Choose the correct HTML tag for the largest heading."," A. H1","B. Head","C. H6","A"],
+          [" What is the correct HTML for adding a background color?"," A. Body style='background color: yellow'"," B. Background yellow /background","C.  Body background='yellow'","A"],
+          [" Choose the correct HTML tag to make text bold?"," A. B"," B. Bold","C. Bld","A"],
+          [" Choose the correct HTML tag to make the text italic"," A. I"," B. Italic","C. it","A"],
+          [" What is the correct HTML element for inserting a line break?"," A. br"," B. break","C. lb","A"],
+          ["what is the difference in an opening tag and a closing tag? "," A. Opening tag has a / in front","  B. Closing tag has a / in front","C. There is no difference","B"],
+          [" Which of the following attributes is used to add link to any element? ","  A. link","  B. href","C.ref","B"],
+          [" How many heading tags are there in HTML5? ","   A. 3","  B. 10","C.6","C"]
+];
+function _(x){
+  return document.getElementById(x);
+}
+function renderQuestion(){
+  test = _("test");
+  if(pos >= questions.length){
+     localStorage.setItem("mark",correct);
+       var mark1=localStorage.getItem("mark");
+       window.location.href="result.html";
+    _("test_status").innerHTML = "Test Completed";
+    pos = 0;
+    correct = 0;
+    return false;
+  }
+  _("test_status").innerHTML = "Question "+(pos+1)+" of "+questions.length;
+  question = questions[pos][0];
+  chA = questions[pos][1];
+  chB = questions[pos][2];
+  chC = questions[pos][3];
+  test.innerHTML = "<h3>"+question+"</h3>";
+  test.innerHTML += "<input type='radio' name='choices' value='A'class='mt-2' > "+chA+"<br>";
+  test.innerHTML += "<input type='radio' name='choices' value='B' class='mt-2'> "+chB+"<br>";
+  test.innerHTML += "<input type='radio' name='choices' value='C' class='mt-2'  > "+chC+"<br><br>";
+  test.innerHTML += "<button onclick='checkAnswer()'class='btn btn-primary'>Submit Answer</button>";
+}
+function checkAnswer(){
+  choices = document.getElementsByName("choices");
+  for(var i=0; i<choices.length; i++){
+    if(choices[i].checked){
+      choice = choices[i].value;
+    }
+  }
+  if(choice == questions[pos][4]){
+    correct++;
+  }
+  pos++;
+  renderQuestion();
+}
+
+
+window.addEventListener("load", renderQuestion, false);
+
+
+
+ var end=new Date().getTime()+300000;
+    var x = setInterval(function() { 
+    var now = new Date().getTime(); 
+    var t = end - now; 
+    /*var days = Math.floor(t / (1000 * 60 * 60 * 24)); */
+    var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60)); 
+    var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60)); 
+    var seconds = Math.floor((t % (1000 * 60)) / 1000); 
+    document.getElementById("demo2").innerHTML = /*days + "d "*/  
+    + hours + "h " + minutes + "m " + seconds + "s "; 
+
+    if (t < 0) { 
+                clearInterval(x);
+                localStorage.setItem("mark",correct); 
+                 window.location.href="result.html";
+                    } 
+            });
+
+    var user=localStorage.getItem("username", name);
+  document.getElementById("demo").innerHTML="welcome"+" " +user;
+</script>
+</body>
+</html>
+

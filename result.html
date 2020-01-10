@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <link rel="stylesheet" type="text/css" href="css/quiz.css">
+	  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	  <link rel="stylesheet" type="text/css" href="fontawesome/css/all.css">
+    <script type="text/javascript" src="jquery.js"></script>
+    	<link rel="stylesheet" href="css/sample.css">
+    	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh" crossorigin="anonymous"></script>
+	<script src="starlight.js"></script>
+
+</head>
+<body class="starlight">
+
+	<div class="wrapper "style="width:100%,height:100px">
+		<h1 class="title  ">The Result:</h1>
+		<h1 id="final" class="title  "></h1>
+		<h1 id="final2" class="title  "></h1>
+		<button class="btn btn-primary btn-lg" onclick="firstpage()"><i class="fas fa-sign-out">sign out</i></button>
+		
+	</div>
+	
+	<!-- <div class="col-lg-4 thank">
+		<h3 class="mt-5 ml-5 tex-center">The Result:</h3>
+		<h5 id="final" class="mt-5 ml-5 "></h5>
+		<h5 id="final2" class="mt-5 ml-5 "></h5>
+	</div>
+	 -->
+	
+    </div>
+    <script type="text/javascript">
+    	 var res=localStorage.getItem("mark");
+    	 if (res<5) {
+    	 document.getElementById("final").innerHTML="you failed";
+    	 document.getElementById("final").style.color="red";
+    	 document.getElementById("final2").innerHTML=res+" " +"from 10";
+
+    	 }
+
+    	 if (res>5&&res<=10) {
+    	 document.getElementById("final").innerHTML="you passed";
+    	 document.getElementById("final").style.color="green";
+    	 document.getElementById("final2").innerHTML=res+" " +"from 10";
+
+    	 }
+    	 localStorage.removeItem("mark");
+
+    	 function firstpage(){
+    	 	window.location.href="exam.html";
+    	 }
+    </script>
+</body>
+</html>

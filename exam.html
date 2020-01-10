@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quiz</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/quiz.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+   <link rel="stylesheet" type="text/css" href="fontawesome/css/all.css">
+   <script type="text/javascript" src="jquery.js"></script>
+
+</head>
+<body>
+
+  <header>
+   
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand text-white" href="#">
+    <i class="fab fa-html5 text-white"></i>
+   HTML QUIZ
+  </a>
+</nav>
+  </header>
+
+  <div class="row aa">
+  <div class="col-md-1"></div>
+  <div class="col-md-3 bb" >
+
+
+    <form name="frm" onsubmit="return sbmt() ">
+    <p id="para"></p>
+    <h1 class="display-4  mb-5">HTML QUIZ!</h1>
+    <h4 class="mt-5">This quiz has 10 questions input your name and your phone number to start it </h4>
+    <div class="row mt-4">
+    <label class="col-md-3"> NAME: </label>
+    <input class="col-md-8" type="text" name="name" class="mt-5"></div><br>
+    <div class="row mt-4">
+    <label class="col-md-3">PHONE: </label>
+    <input class="col-md-8 mb-3" type="text" name="phone"  class="mt-5"></div>
+    <div class="row mt-4">
+    <div class="col-md-3"></div>
+    <input  type="submit" name="" value="start" class="btn btn-danger btn-lg col-md-8 "></div>
+  </form>
+ 
+
+
+
+  <script type="text/javascript">
+
+
+    function sbmt(){
+      var form = document.frm;
+      var name = form.elements["name"].value;
+      var phone = form.elements["phone"].value;
+      
+      if( phone.length == 10){
+        localStorage.setItem("username", name);
+      var name = localStorage.getItem("username");
+      localStorage.setItem("phone", phone);
+      var password = localStorage.getItem("phone");
+        window.location.href="test.html";
+        return false;
+      } else{
+        document.getElementById('para').innerHTML="phone number not correct! must be ten numbers";
+        
+        return false;
+      }
+    }
+  </script>
+</div>
+</div>
+
+</body>
+</html>
